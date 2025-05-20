@@ -9,14 +9,11 @@ const data = await response.json();
 document.querySelector('#root').innerHTML = render(
   <div className="container">
     {
-      <>
-        <Workshop />
-      </>
+      <Workshop title={data.data.title} 
+        description={data.data.description} 
+        instructor={data.data.instructor} 
+        venue={data.data.venue} />
    }
 
   </div>
-  /*<><p>Název kurzu: {data.data.title}</p>
-  <p>Jméno instruktora: {data.data.instructor.name}</p>
-  <p>Místo konání: {data.data.venue.street}, {data.data.venue.city}</p>
-  </>*/
 );
