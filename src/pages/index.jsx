@@ -9,10 +9,7 @@ const data = await response.json();
 document.querySelector('#root').innerHTML = render(
   <div className="container">
     {
-      <Workshop title={data.data.title} 
-        description={data.data.description} 
-        instructor={data.data.instructor} 
-        venue={data.data.venue} />
+      <Workshop/>
    }
 
   </div>

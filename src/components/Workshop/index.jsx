@@ -2,18 +2,21 @@ import { WorkshopIntro } from './WorkshopIntro';
 import {Venue} from './Venue';
 import { Instructor } from './Instructor';
 
+const response = await fetch ('http://localhost:4000/api/workshops/0')
+const data = await response.json();
+
 export const Workshop = (props) => {
     return(
         <>
-            <WorkshopIntro title="Úvod do komponentového myšlení"
-            description="Jak při vývoji software využívat komponenty pro zpřehlednění kódu a snadnější znovupoužitelnost."/>
-            <Venue name="IT-Bootcamp"
-            city="Praha"
-            street="Polovidičové náměstí 837/11"/>
-            <Instructor jmeno="Marie Pokorná-Těšitelová"
-            profession="Senior full-stack vývojářka"
-            email="marie.pokorna@it-bootcamp.cz"
-            bio="Marie je zkušená lektorka, která se věnuje výuce programování již od svých 21 let. Její oblíbené technologie jsou React a Node.js. V současné době pracuje jako vývojářka v jedné z největších českých softwarových firem."/>
+            <WorkshopIntro title={data.data.title} 
+            description={data.data.description}/>
+            <Venue name={data.data.venue.name}
+            city={data.data.venue.city}
+            street={data.data.venue.street}/>
+            <Instructor instructor={data.data.instructor.name} 
+            profession={data.data.instructor.profession}
+            email={data.data.instructor.email}
+            bio={data.data.instructor.bio}/>
         </>
     )
 }
